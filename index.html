@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zanix Qhove Creative Co. Launch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      padding: 1rem;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+      background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.1), transparent 50%),
+                  radial-gradient(circle at 80% 30%, rgba(255, 0, 193, 0.1), transparent 50%),
+                  linear-gradient(-45deg, #0f172a, #1e1e1e, #0f172a, #1e1e1e);
+      background-size: 200% 200%;
+      animation: aurora 15s ease infinite;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+      position: relative;
+    }
+    @keyframes aurora {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .glitch {
+      position: relative;
+      color: white;
+      font-size: 2.5rem;
+      font-weight: 800;
+      animation: glitch 1.2s infinite;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .glitch { font-size: 3.5rem; }
+    }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+    .glitch::before {
+      animation: glitchTop 1.2s infinite;
+      color: #f00;
+      top: -3px;
+      left: 3px;
+    }
+    .glitch::after {
+      animation: glitchBottom 1.2s infinite;
+      color: #0ff;
+      top: 3px;
+      left: -3px;
+    }
+    @keyframes glitch {
+      0%, 100% { text-shadow: 2px 2px #ff00c1; }
+      20% { text-shadow: -2px -2px #00fff9; }
+      40% { text-shadow: 2px -2px #ff00c1; }
+      60% { text-shadow: -2px 2px #00fff9; }
+      80% { text-shadow: 2px 2px #ff00c1; }
+    }
+    @keyframes glitchTop {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-2px, -2px); }
+      40% { transform: translate(-2px, 2px); }
+      60% { transform: translate(2px, -2px); }
+      80% { transform: translate(2px, 2px); }
+    }
+    @keyframes glitchBottom {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-2px, 2px); }
+      80% { transform: translate(-2px, -2px); }
+    }
+    .logo-video {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.6));
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .logo-video { width: 140px; height: 140px; }
+    }
+    .timer-box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+    .time-segment {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+      width: 70px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+      animation: pulseGlow 2s infinite;
+      transition: transform 0.3s;
+    }
+    .time-segment:hover {
+      transform: scale(1.05);
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.15); }
+      50% { box-shadow: 0 0 25px rgba(255, 0, 193, 0.4); }
+    }
+    .time-number {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    .time-label {
+      font-size: 0.75rem;
+      color: #aaa;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+      letter-spacing: 1px;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #aaa;
+      margin-top: auto;
+      width: 100%;
+      z-index: 10;
+      position: relative;
+    }
+    footer a {
+      color: #0ff;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <video class="logo-video" autoplay muted loop playsinline>
+      <source src="ZanixQhoveCCo.mp4" type="video/mp4" />
+    </video>
+    <h1 class="glitch mb-2" data-text="Zanix Qhove Creative Co.">Zanix Qhove Creative Co.</h1>
+    <p class="text-lg md:text-xl mb-6 text-gray-300">Since Official Launch</p>
+    <div class="timer-box" id="timer"></div>
+  </main>
+  <footer>
+    © <a href="https://mit.9362006.xyz" target="_blank">Zanix Qhove</a> <span id="years"></span>
+  </footer>  <script>
+    const startDate = new Date('2025-08-01T00:00:00');
+    const timerElement = document.getElementById('timer');
+    const yearsElement = document.getElementById('years');
+
+    function updateTimer() {
+      const now = new Date();
+      let diff = now - startDate;
+
+      if (diff < 0) diff = 0;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      const years = (now.getFullYear() - startDate.getFullYear());
+
+      timerElement.innerHTML = `
+        <div class="time-segment"><div class="time-number">${days}</div><div class="time-label">Days</div></div>
+        <div class="time-segment"><div class="time-number">${hours}</div><div class="time-label">Hours</div></div>
+        <div class="time-segment"><div class="time-number">${minutes}</div><div class="time-label">Minutes</div></div>
+        <div class="time-segment"><div class="time-number">${seconds}</div><div class="time-label">Seconds</div></div>`;
+      yearsElement.textContent = years > 0 ? years + ' Years' : '2025';
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+  </script></body>
+</html>
